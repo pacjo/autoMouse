@@ -11,9 +11,9 @@ How to get it:
 
   1. Get it from releases page (just download the newest release)
 
-  2. Build it yourself
-    - Install AutoHotKey
-    - Download whole github project
-    - Right click on autoMouse.ahk file and select Compile Script (GUI)
-    - (optional) add included .ico file
-    - Click convert and you are done. 
+  2. Build it yourself </br>
+    - Install AutoHotKey </br>
+    - Download whole github project </br>
+    - Right click on autoMouse.ahk file and select Compile Script (GUI) </br>
+    - (optional) Add included .ico file </br>
+    - Click convert and you are done </br>

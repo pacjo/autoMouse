@@ -7,6 +7,15 @@ Features:
   - customizability
   - open source
 
+
+Usage:
+
+&nbsp; &nbsp; F6 toggles mouse giggler </br>
+&nbsp; &nbsp; F7 toggles auto clicker </br>
+&nbsp; &nbsp; ctrl + shit + r reload program (if it got stuck) </br>
+&nbsp; &nbsp; ctrl + t is for testing purposes (it gives you some info about script) </br>
+
+
 How to get it:
 
   1. Get it from releases page (just download the newest release)
@@ -18,14 +27,11 @@ How to get it:
     - (optional) Add included .ico file </br>
     - Click convert and you are done </br>
 
+
 Getting started:
   
   1. Run autoMouse.exe
   2. Find autoMouse icon in Windows Taskbar
   3. Right click it and select "Settings"
   4. Enter parameters for clicking delay and moving speed
-  5. You are ready to go </br>
-    - F6 toggles mouse giggler </br>
-    - F7 toggles auto clicker </br>
-    - ctrl + shit + r reload program (if it got stuck) </br>
-    - ctrl + t is for testing purposes (it gives you some info about script) </br>
+  5. You are ready to go

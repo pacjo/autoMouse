@@ -1,6 +1,6 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SendMode Event ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #MaxThreadsPerHotkey 2
@@ -52,13 +52,13 @@ return
 AUTOCLICKER_HANDLER:
 	;Menu, Tray, ToggleCheck, &Auto clicker
 	clickerToggle := !clickerToggle
-	click_mouse()
+	Goto, click_mouse
 return
 
 MOUSEGIGGLER_HANDLER:
 	;Menu, Tray, ToggleCheck, &Mouse giggler
 	movingToggle := !movingToggle
-	move_mouse()
+	Goto, move_mouse
 return
 
 RUN_ON_BOOT:
@@ -88,10 +88,9 @@ GuiEscape:
 GuiClose:
 	Gui, Cancel
 
-;**************************Functions******************************************
+;**************************Labels******************************************
 
-move_mouse()
-{
+move_mouse:
 	global movingToggle
 	global moving_speed
 
@@ -104,16 +103,14 @@ move_mouse()
 		MouseMove, 0, 30, %moving_speed%, R
 		MouseMove, -30, 0, %moving_speed%, R
 		MouseMove, 0, -30, %moving_speed%, R
-		move_mouse()
+		Goto, move_mouse
 		return
 	} else
 		Menu, Tray, Uncheck, &Mouse giggler
 		return
+return
 
-}
-
-click_mouse()
-{
+click_mouse:
 	global clickerToggle
 	global clicking_delay
 
@@ -124,13 +121,13 @@ click_mouse()
 		Menu, Tray, Check, &Auto clicker
 		MouseClick
 		Sleep, %clicking_delay%
-		click_mouse()
+		Goto, click_mouse
 	}
 	else
 		Menu, Tray, Uncheck, &Auto clicker
 		return
+return
 
-}
 
 ;**************************Hotkeys********************************************
 
@@ -142,11 +139,11 @@ return
 
 F6::
 movingToggle := !movingToggle
-move_mouse()
+Goto, move_mouse
 return
 
 F7::
 clickerToggle := !clickerToggle
-click_mouse()
+Goto, click_mouse
 return
 

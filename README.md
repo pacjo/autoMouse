@@ -28,7 +28,7 @@ How to get it:
     - Click convert and you are done </br>
 
 
-Getting started:
+Getting started (if you don't want to do it, just download settings.ini and put it the same folder as autoMouse.exe):
   
   1. Run autoMouse.exe
   2. Find autoMouse icon in Windows Taskbar

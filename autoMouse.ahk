@@ -1,11 +1,14 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Event ; Recommended for new scripts due to its superior speed and reliability.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#SingleInstance
 
 #MaxThreadsPerHotkey 2
 
 ;This script saves it's settings in directory, where it was executed
+
+version_number := "1.0"
 
 ;**************************Menu settings**************************************
 
@@ -38,6 +41,7 @@ Gui Add, Text, x88 y40 w201 h23 +0x200, Clicking speed (delay between clicks)
 Gui Add, Edit, vmoving_speed x8 y72 w67 h21 +Number, %moving_speed%
 Gui Add, Text, x88 y72 w201 h23 +0x200, Mouse moving speed [mm/s]
 Gui Add, Button, gSAVE_BUTTON x8 y152 w283 h23, Save
+Gui Add, Text, x8 y180 w201 h13 +0x200, %version_number%
 
 ;**************************end of autorun section*****************************
 
@@ -52,13 +56,13 @@ return
 AUTOCLICKER_HANDLER:
 	;Menu, Tray, ToggleCheck, &Auto clicker
 	clickerToggle := !clickerToggle
-	Goto, click_mouse
+	click_mouse()
 return
 
 MOUSEGIGGLER_HANDLER:
 	;Menu, Tray, ToggleCheck, &Mouse giggler
 	movingToggle := !movingToggle
-	Goto, move_mouse
+	move_mouse()
 return
 
 RUN_ON_BOOT:
@@ -88,9 +92,10 @@ GuiEscape:
 GuiClose:
 	Gui, Cancel
 
-;**************************Labels******************************************
+;**************************Functions******************************************
 
-move_mouse:
+move_mouse()
+{
 	global movingToggle
 	global moving_speed
 
@@ -103,14 +108,16 @@ move_mouse:
 		MouseMove, 0, 30, %moving_speed%, R
 		MouseMove, -30, 0, %moving_speed%, R
 		MouseMove, 0, -30, %moving_speed%, R
-		Goto, move_mouse
+		move_mouse()
 		return
 	} else
 		Menu, Tray, Uncheck, &Mouse giggler
 		return
-return
 
-click_mouse:
+}
+
+click_mouse()
+{
 	global clickerToggle
 	global clicking_delay
 
@@ -121,13 +128,13 @@ click_mouse:
 		Menu, Tray, Check, &Auto clicker
 		MouseClick
 		Sleep, %clicking_delay%
-		Goto, click_mouse
+		click_mouse()
 	}
 	else
 		Menu, Tray, Uncheck, &Auto clicker
 		return
-return
 
+}
 
 ;**************************Hotkeys********************************************
 
@@ -139,11 +146,10 @@ return
 
 F6::
 movingToggle := !movingToggle
-Goto, move_mouse
+move_mouse()
 return
 
 F7::
 clickerToggle := !clickerToggle
-Goto, click_mouse
+click_mouse()
 return
-

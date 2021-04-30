@@ -13,7 +13,7 @@ Usage:
 &nbsp; &nbsp; F6 toggles mouse giggler </br>
 &nbsp; &nbsp; F7 toggles auto clicker </br>
 &nbsp; &nbsp; ctrl + shit + r reload program (if it got stuck) </br>
-&nbsp; &nbsp; ctrl + t is for testing purposes (it gives you some info about script) </br>
+&nbsp; &nbsp; ctrl + t is for testing purposes (gives you some info about script) </br>
 
 
 How to get it:

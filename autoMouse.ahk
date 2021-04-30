@@ -2,13 +2,18 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#SingleInstance
+#SingleInstance Force
 
 #MaxThreadsPerHotkey 2
 
 ;This script saves it's settings in directory, where it was executed
 
 version_number := "1.0"
+
+;Default values (get changed if setting.ini exists):
+run_startup := 0
+clicking_delay := 30
+moving_speed := 10
 
 ;**************************Menu settings**************************************
 
@@ -23,9 +28,14 @@ Menu, Tray, Add, &Exit, EXIT_HANDLER
 
 ;**************************Get stored settings / create settings file*********
 
-IniRead, run_startup, settings.ini, Settings, RunOnSystemBoot
-IniRead, clicking_delay, settings.ini, Settings, ClickingDelay
-IniRead, moving_speed, settings.ini, Settings, MovingSpeed
+if !FileExist("settings.ini")
+	FileAppend, [Settings] `nRunOnSystemBoot=0 `nClickingDelay=30 `nMovingSpeed=10, settings.ini
+
+if FileExist("settings.ini")
+	IniRead, run_startup, settings.ini, Settings, RunOnSystemBoot
+	IniRead, clicking_delay, settings.ini, Settings, ClickingDelay
+	IniRead, moving_speed, settings.ini, Settings, MovingSpeed
+	
 
 ;MsgBox, Run on startup: %run_startup% `nClicking delay: %clicking_delay% `nMoving speed: %moving_speed%
 

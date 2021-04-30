@@ -1,14 +1,14 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Event  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#SingleInstance Force
 
+#SingleInstance Force
 #MaxThreadsPerHotkey 2
+SendMode Event
 
 ;This script saves it's settings in directory, where it was executed
 
-version_number := "1.0"
+version_number := "1.1"
 
 ;Default values (get changed if setting.ini exists):
 run_startup := 0

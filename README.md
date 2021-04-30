@@ -25,4 +25,4 @@ How to get it:
     - Download whole github project </br>
     - Right click on autoMouse.ahk file and select Compile Script (GUI) </br>
     - (optional) Add included .ico file </br>
-    - Click convert and you are done </br>
+    - Click convert and you are done </br> 

@@ -29,7 +29,7 @@ Menu, Tray, Add, &Exit, EXIT_HANDLER
 ;**************************Get stored settings / create settings file*********
 
 if !FileExist("settings.ini")
-	FileAppend, [Settings] `nRunOnSystemBoot=0 `nClickingDelay=30 `nMovingSpeed=10, settings.ini
+	FileAppend, [Settings] `nRunOnSystemBoot=%run_startup% `nClickingDelay=%clicking_delay% `nMovingSpeed=%moving_speed%, settings.ini
 
 if FileExist("settings.ini")
 	IniRead, run_startup, settings.ini, Settings, RunOnSystemBoot

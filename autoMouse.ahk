@@ -20,7 +20,7 @@ moving_speed := 10
 Menu, Tray, Tip, autoMouse
 Menu, Tray, NoStandard
 Menu, Tray, Add, &Auto clicker, AUTOCLICKER_HANDLER
-Menu, Tray, Add, &Mouse giggler, MOUSEGIGGLER_HANDLER
+Menu, Tray, Add, &Mouse jiggler, MOUSEJIGGLER_HANDLER
 Menu, Tray, Add
 Menu, Tray, Add, &Settings, SETTINGS_HANDLER
 Menu, Tray, Add
@@ -66,13 +66,13 @@ return
 AUTOCLICKER_HANDLER:
 	;Menu, Tray, ToggleCheck, &Auto clicker
 	clickerToggle := !clickerToggle
-	click_mouse()
+	Goto, click_mouse
 return
 
-MOUSEGIGGLER_HANDLER:
-	;Menu, Tray, ToggleCheck, &Mouse giggler
+MOUSEJIGGLER_HANDLER:
+	;Menu, Tray, ToggleCheck, &Mouse jiggler
 	movingToggle := !movingToggle
-	move_mouse()
+	Goto, move_mouse
 return
 
 RUN_ON_BOOT:
@@ -104,8 +104,7 @@ GuiClose:
 
 ;**************************Functions******************************************
 
-move_mouse()
-{
+move_mouse:
 	global movingToggle
 	global moving_speed
 
@@ -113,21 +112,18 @@ move_mouse()
 
 	if (movingToggle = 1)
 	{
-		Menu, Tray, Check, &Mouse giggler
+		Menu, Tray, Check, &Mouse jiggler
 		MouseMove, 30, 0, %moving_speed%, R
 		MouseMove, 0, 30, %moving_speed%, R
 		MouseMove, -30, 0, %moving_speed%, R
 		MouseMove, 0, -30, %moving_speed%, R
-		move_mouse()
+		Goto, move_mouse
 		return
 	} else
-		Menu, Tray, Uncheck, &Mouse giggler
+		Menu, Tray, Uncheck, &Mouse jiggler
 		return
 
-}
-
-click_mouse()
-{
+click_mouse:
 	global clickerToggle
 	global clicking_delay
 
@@ -138,13 +134,11 @@ click_mouse()
 		Menu, Tray, Check, &Auto clicker
 		MouseClick
 		Sleep, %clicking_delay%
-		click_mouse()
+		Goto, click_mouse
 	}
 	else
 		Menu, Tray, Uncheck, &Auto clicker
 		return
-
-}
 
 ;**************************Hotkeys********************************************
 
@@ -156,10 +150,10 @@ return
 
 F6::
 movingToggle := !movingToggle
-move_mouse()
+Goto, move_mouse
 return
 
 F7::
 clickerToggle := !clickerToggle
-click_mouse()
+Goto, click_mouse
 return

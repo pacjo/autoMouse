@@ -6,6 +6,7 @@ Features:
   - small size
   - customizability
   - open source
+  - if you want other features please submit an new issue 
 
 
 Usage:

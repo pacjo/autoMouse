@@ -6,7 +6,13 @@ Features:
   - small size
   - customizability
   - open source
-  - if you want other features please submit an new issue 
+
+
+ToDo:
+  - add option to turn of certian shortcuts
+  - add help menu
+  - remake settings menu
+  - if you want other features please submit an new issue
 
 
 Usage:

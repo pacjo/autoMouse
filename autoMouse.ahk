@@ -8,7 +8,7 @@ SendMode Event
 
 ;This script saves it's settings in directory, where it was executed
 
-version_number := "1.1"
+version_number := "1.1-ALPHA1"
 
 ;Default values (get changed if setting.ini exists):
 run_startup := 0
@@ -28,14 +28,15 @@ Menu, Tray, Add, &Exit, EXIT_HANDLER
 
 ;**************************Get stored settings / create settings file*********
 
-if !FileExist("settings.ini")
-	FileAppend, [Settings] `nRunOnSystemBoot=%run_startup% `nClickingDelay=%clicking_delay% `nMovingSpeed=%moving_speed%, settings.ini
+if !FileExist("%A_MyDocuments%\settings.ini")
+	FileCreateDir, C:\Users\kamil\Documents\autoMouse
+	FileAppend, [Settings] `nRunOnSystemBoot=%run_startup% `nClickingDelay=%clicking_delay% `nMovingSpeed=%moving_speed%, %A_MyDocuments%\autoMouse\settings.ini
 
-if FileExist("settings.ini")
-	IniRead, run_startup, settings.ini, Settings, RunOnSystemBoot
-	IniRead, clicking_delay, settings.ini, Settings, ClickingDelay
-	IniRead, moving_speed, settings.ini, Settings, MovingSpeed
-	
+if FileExist("%A_MyDocuments%\settings.ini")
+	IniRead, run_startup, %A_MyDocuments%\autoMouse\settings.ini, Settings, RunOnSystemBoot
+	IniRead, clicking_delay, %A_MyDocuments%\autoMouse\settings.ini, Settings, ClickingDelay
+	IniRead, moving_speed, %A_MyDocuments%\autoMouse\settings.ini, Settings, MovingSpeed
+
 
 ;MsgBox, Run on startup: %run_startup% `nClicking delay: %clicking_delay% `nMoving speed: %moving_speed%
 
@@ -88,9 +89,9 @@ return
 
 SAVE_BUTTON:
 	Gui, Submit
-	IniWrite, %run_startup%, settings.ini, Settings, RunOnSystemBoot
-	IniWrite, %clicking_delay%, settings.ini, Settings, ClickingDelay
-	IniWrite, %moving_speed%, settings.ini, Settings, MovingSpeed
+	IniWrite, %run_startup%, %A_MyDocuments%\autoMouse\settings.ini, Settings, RunOnSystemBoot
+	IniWrite, %clicking_delay%, %A_MyDocuments%\autoMouse\settings.ini, Settings, ClickingDelay
+	IniWrite, %moving_speed%, %A_MyDocuments%\autoMouse\settings.ini, Settings, MovingSpeed
 	gosub RUN_ON_BOOT
 return
 
@@ -145,7 +146,7 @@ click_mouse:
 ^+r::Reload
 return
 
-^t::MsgBox, Run on startup: %run_startup% `nClicking delay: %clicking_delay% `nMoving speed: %moving_speed% `nScript name: "%A_ScriptDir%\%A_ScriptName%" `nShortcut: "%A_Startup%\%A_ScriptName%.lnk"
+^t::MsgBox, Run on startup: %run_startup% `nClicking delay: %clicking_delay% `nMoving speed: %moving_speed% `nScript name: "%A_ScriptDir%\%A_ScriptName%" `nShortcut: "%A_Startup%\%A_ScriptName%.lnk `nDocuments folder:%A_MyDocuments%
 return
 
 F6::

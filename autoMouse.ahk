@@ -29,7 +29,7 @@ Menu, Tray, Add, &Exit, EXIT_HANDLER
 ;**************************Get stored settings / create settings file*********
 
 if !FileExist("%A_MyDocuments%\settings.ini")
-	FileCreateDir, C:\Users\kamil\Documents\autoMouse
+	FileCreateDir, %A_MyDocuments%\autoMouse
 	FileAppend, [Settings] `nRunOnSystemBoot=%run_startup% `nClickingDelay=%clicking_delay% `nMovingSpeed=%moving_speed%, %A_MyDocuments%\autoMouse\settings.ini
 
 if FileExist("%A_MyDocuments%\settings.ini")

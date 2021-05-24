@@ -8,11 +8,10 @@ Features:
   - open source
 
 
-ToDo:
+ToDo (if you want another feature please submit a new issue):
   - add option to turn of certian shortcuts
   - add help menu
   - remake settings menu
-  - if you want other features please submit an new issue
   - <s>save settings file in Documents\autoMouse</s> (maybe make it changeable)
 
 

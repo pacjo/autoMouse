@@ -13,7 +13,7 @@ ToDo:
   - add help menu
   - remake settings menu
   - if you want other features please submit an new issue
-  - save settings file in Documents\autoMouse (maybe make it changeable)
+  - <s>save settings file in Documents\autoMouse</s> (maybe make it changeable)
 
 
 Usage:

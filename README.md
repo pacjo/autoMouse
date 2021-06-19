@@ -19,6 +19,7 @@ ToDo (if you want another feature please submit a new issue):
   - add help menu
   - remake settings menu
   - <s>save settings file in Documents\autoMouse</s> (maybe make it changeable)
+  - make script work on systems running anything other than Windows
 
 
 Usage:

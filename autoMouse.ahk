@@ -1,4 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
@@ -6,16 +6,16 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MaxThreadsPerHotkey 2
 SendMode Event
 
-;This script saves it's settings in directory, where it was executed
+; This script saves it's settings in directory, where it was executed
 
-version_number := "1.1-ALPHA1"
+version_number := "1.1-ALPHA2"
 
-;Default values (get changed if setting.ini exists):
+; Default values (get changed if setting.ini exists):
 run_startup := 0
 clicking_delay := 30
 moving_speed := 10
 
-;**************************Menu settings**************************************
+; **************************Menu settings**************************************
 
 Menu, Tray, Tip, autoMouse
 Menu, Tray, NoStandard
@@ -26,7 +26,7 @@ Menu, Tray, Add, &Settings, SETTINGS_HANDLER
 Menu, Tray, Add
 Menu, Tray, Add, &Exit, EXIT_HANDLER
 
-;**************************Get stored settings / create settings file*********
+; **************************Get stored settings / create settings file*********
 
 if !FileExist("%A_MyDocuments%\settings.ini")
 	FileCreateDir, %A_MyDocuments%\autoMouse
@@ -38,11 +38,11 @@ if FileExist("%A_MyDocuments%\settings.ini")
 	IniRead, moving_speed, %A_MyDocuments%\autoMouse\settings.ini, Settings, MovingSpeed
 
 
-;MsgBox, Run on startup: %run_startup% `nClicking delay: %clicking_delay% `nMoving speed: %moving_speed%
+; MsgBox, Run on startup: %run_startup% `nClicking delay: %clicking_delay% `nMoving speed: %moving_speed%
 
-;**************************Gui************************************************
+; **************************Gui************************************************
 
-;Gui Add, CheckBox, vrun_startup x8 y8 w283 h23 +Checked, Run on system start (places shortcut in shell:startup)
+; Gui Add, CheckBox, vrun_startup x8 y8 w283 h23 +Checked, Run on system start (places shortcut in shell:startup)
 If (run_startup = 1)
 	Gui Add, CheckBox, vrun_startup x8 y8 w283 h23 +Checked, Run on system start (places shortcut in shell:startup)
 else
@@ -65,13 +65,13 @@ SETTINGS_HANDLER:
 return
 
 AUTOCLICKER_HANDLER:
-	;Menu, Tray, ToggleCheck, &Auto clicker
+	; Menu, Tray, ToggleCheck, &Auto clicker
 	clickerToggle := !clickerToggle
 	Goto, click_mouse
 return
 
 MOUSEJIGGLER_HANDLER:
-	;Menu, Tray, ToggleCheck, &Mouse jiggler
+	; Menu, Tray, ToggleCheck, &Mouse jiggler
 	movingToggle := !movingToggle
 	Goto, move_mouse
 return
@@ -79,19 +79,24 @@ return
 RUN_ON_BOOT:
 	If (run_startup = 1) {
 		FileCreateShortcut, %A_ScriptDir%\%A_ScriptName%, %A_Startup%\%A_ScriptName%.lnk
-		;MsgBox, creation complete
+		; MsgBox, creation complete
 	}
 	If (run_startup = 0) {
 		FileDelete, %A_Startup%\%A_ScriptName%.lnk
-		;MsgBox, file deleted
+		; MsgBox, file deleted
 	}
 return
 
 SAVE_BUTTON:
 	Gui, Submit
+
+	FileDelete, %A_MyDocuments%\autoMouse\settings.ini
+	FileAppend, , %A_MyDocuments%\autoMouse\settings.ini
+
 	IniWrite, %run_startup%, %A_MyDocuments%\autoMouse\settings.ini, Settings, RunOnSystemBoot
 	IniWrite, %clicking_delay%, %A_MyDocuments%\autoMouse\settings.ini, Settings, ClickingDelay
 	IniWrite, %moving_speed%, %A_MyDocuments%\autoMouse\settings.ini, Settings, MovingSpeed
+
 	gosub RUN_ON_BOOT
 return
 
@@ -109,7 +114,7 @@ move_mouse:
 	global movingToggle
 	global moving_speed
 
-	;MsgBox, %movingToggle%
+	; MsgBox, %movingToggle%
 
 	if (movingToggle = 1)
 	{
@@ -128,7 +133,7 @@ click_mouse:
 	global clickerToggle
 	global clicking_delay
 
-	;MsgBox, %clickerToggle%
+	; MsgBox, %clickerToggle%
 
 	if (clickerToggle = 1)
 	{

@@ -2,6 +2,12 @@
 
 autoMouse is a small and customasible AutoHotKey program that jiggles mouse and acts as autoclicker.
 
+<a href="https://www.paypal.com/donate?hosted_button_id=VKCHVWUV48STE" 
+target="_blank">
+<img src="https://janbeta.net/wp-content/uploads/2020/06/Paypal-Donate.png" alt="Support me via PayPal" 
+title="PayPal – The safer, easier way to pay online!" border="0" width="20%" height="20%" />
+</a>
+
 Features:
   - small size
   - customizability
